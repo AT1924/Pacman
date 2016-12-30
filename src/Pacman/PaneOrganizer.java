@@ -1,3 +1,7 @@
+package Pacman;
+
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 public class PaneOrganizer {
 	private BorderPane _root;
