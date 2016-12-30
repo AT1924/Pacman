@@ -13,7 +13,7 @@ public class PaneOrganizer {
 		Pane pacmanPane = new Pane();
 		_root.setCenter(pacmanPane);
 		pacmanPane.isFocused();
-		_root.getChildren().add(pacmanPane);
+	//	_root.getChildren().add(pacmanPane);
 	}
 	
 	public Pane getRoot(){
