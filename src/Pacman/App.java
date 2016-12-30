@@ -14,16 +14,36 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-    @Override
-    public void start(Stage stage) {
-        // Create top-level object, set up the scene, and show the stage here.
-    }
+//    @Override
+//    public void start(Stage stage) {
+//        // Create top-level object, set up the scene, and show the stage here.
+//    }
+//
+//    /*
+//    * Here is the mainline! No need to change this.
+//    */
+//    public static void main(String[] argv) {
+//        // launch is a method inherited from Application
+//        launch(argv);
+//    }
+	
+	  @Override
+	    public void start(Stage stage) {
+	        // Create top-level object, set up the scene, and show the stage here.
+	    	PaneOrganizer organizer = new PaneOrganizer();
+	    	Scene scene = new Scene(organizer.getRoot());
+	    	stage.setScene(scene);
+	    	stage.setTitle("Pacman");
+	    	stage.show();
+	    }
 
-    /*
-    * Here is the mainline! No need to change this.
-    */
-    public static void main(String[] argv) {
-        // launch is a method inherited from Application
-        launch(argv);
-    }
+	    /*
+	    * Here is the mainline! No need to change this.
+	    */
+	    public static void main(String[] argv) {
+	        // launch is a method inherited from Application
+	        launch(argv);
+	    }
+	
+	
 }
