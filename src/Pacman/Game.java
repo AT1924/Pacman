@@ -20,7 +20,7 @@ public class Game {
 				pacmanPane.getChildren().add(_map[i][j].getNode());
 				
 				
-				//System.out.println("Charley doesnt even suck dick");
+				
 			}
 		}
 		//pacmanPane.getChildren().add(_map.getNode());
