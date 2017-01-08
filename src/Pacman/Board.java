@@ -19,10 +19,12 @@ public class Board {
 		for (int i = 0; i < tempMap.length; i++){
 			for (int j = 0; j < tempMap[i].length; j++){
 				// create and place SmartSquare on board
-				_map[i][j] = new SmartSquare(tempMap[i][j]);	
-			
+				_map[i][j] = new SmartSquare(tempMap[i][j]);
+				System.out.println(_map[i][j].getClass());
+				
 			}
 		}
+		
 		}
 	
 	public static void main(String[] argv){
@@ -52,5 +54,19 @@ public class Board {
 	
 		_map[row][col] = square;
 	}
+	
+	public void setMap(){
+		Board b = new Board();
+		
+		for (int row = 0; row < 23; row++){
+			for (int col = 0; col < 23; col++){
+				if (_map = ){
+					
+				}
+			}
+		}
+	}
+	
+	
 	
 }
