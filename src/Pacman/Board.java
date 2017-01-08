@@ -6,10 +6,12 @@ import javafx.scene.paint.Color;
 
 public class Board {
 	public SmartSquare[][] _map;
-	
-	//private SmartSquare _square;
+	private BoardLocation _location;
+	private SmartSquare _square;
 	
 	public Board(){
+		
+		//_location = new BoardLocation();
 		cs015.fnl.PacmanSupport.SupportMap	stencilMap = new cs015.fnl.PacmanSupport.SupportMap();
 		BoardLocation[][] tempMap = stencilMap.getMap();
 		// find syntax for dereferencing the 2nd dimension of the 2d array
@@ -20,7 +22,21 @@ public class Board {
 			for (int j = 0; j < tempMap[i].length; j++){
 				// create and place SmartSquare on board
 				_map[i][j] = new SmartSquare(tempMap[i][j]);
-				System.out.println(_map[i][j].getClass());
+				//System.out.println(_map[i][j]);
+				if (tempMap[i][j] == _location.WALL){
+					_map[i][j].setFill(Color.BLUE);
+					//_map[i][j].get_isWall(); 
+					
+				}
+				if (tempMap[i][j] == _location.FREE){
+					_map[i][j].setFill(Color.BLACK);
+				}
+			
+				
+				//_map[i][j] = new SmartSquare(tempMap[i][j]);
+				//if (_map[i][j] == _location.WALL)
+				//System.out.println(_map[i][j]);
+				
 				
 			}
 		}
@@ -32,18 +48,7 @@ public class Board {
 		int x = 0;
 //		for (int i = 0; i < b._map.length; i++){
 //			for (int j = 0; j < b._map[i].length; j++){
-//			System.out.println(b._map[i][j].WALL());	
-//			// create smartsquare
-//			SmartSquare square = new SmartSquare(null);
-//			// use information from b._map
-//			square.setFill(Color.BLUE);
-//			square.setX(b._map[i].length);
-//			square.setY(b._map[j].length);
-//			b._map[i][j].values();
-//			b._map[i][j] = square.get_squares2();
-//			
-//			// insert smartsquare into board
-//			// 
+//				if (_map[i][j] = )
 //			}
 //		}
 	}
@@ -60,13 +65,17 @@ public class Board {
 		
 		for (int row = 0; row < 23; row++){
 			for (int col = 0; col < 23; col++){
-				if (_map = ){
+			//	if (_map){
 					
 				}
 			}
 		}
+	
+	public SmartSquare[][] get_map(){
+		return _map;
 	}
 	
-	
-	
 }
+	
+	
+	

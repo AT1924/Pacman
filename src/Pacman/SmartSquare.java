@@ -3,15 +3,17 @@ package Pacman;
 import java.util.ArrayList;
 
 import cs015.fnl.PacmanSupport.BoardLocation;
+import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class SmartSquare {
 	private Rectangle _rect;
 	private BoardLocation _location;
-	private boolean isWall;
+	private boolean _isWall = false;
 	
 	public SmartSquare(BoardLocation location){
+		
 		_rect = new Rectangle();
 		_rect.setWidth(20);
 		_rect.setHeight(20);
@@ -41,6 +43,14 @@ public class SmartSquare {
 	
 	public void setFill(Color color){
 		_rect.setFill(color);
+	}
+	
+	public Boolean get_isWall(){
+		return _isWall;
+	}
+	
+	public Node getNode(){
+		return _rect;
 	}
 	
 	
