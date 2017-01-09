@@ -23,19 +23,39 @@ public class Board {
 				// create and place SmartSquare on board
 				_map[i][j] = new SmartSquare(tempMap[i][j]);
 				//System.out.println(_map[i][j]);
-				if (tempMap[i][j] == _location.WALL){
+//				if (tempMap[i][j] == _location.WALL){
+//					_map[i][j].setFill(Color.BLUE);
+//					//_map[i][j].get_isWall(); 
+//					
+//				}
+//				if (tempMap[i][j] == _location.FREE){
+//					_map[i][j].setFill(Color.BLACK);
+//				}
+//				else{
+//					//not a wall
+//					System.out.println("");
+//				}
+				switch(tempMap[i][j]){
+				case WALL:
 					_map[i][j].setFill(Color.BLUE);
-					//_map[i][j].get_isWall(); 
+					_map[i][j].get_isWall(); 
+					break;
 					
-				}
-				if (tempMap[i][j] == _location.FREE){
+				case FREE:
 					_map[i][j].setFill(Color.BLACK);
+					_map[i][j].get_isWall(); 
+					break;
+					
+				default:
+					System.out.println("");
 				}
 			
-				
 				//_map[i][j] = new SmartSquare(tempMap[i][j]);
 				//if (_map[i][j] == _location.WALL)
 				//System.out.println(_map[i][j]);
+				if(i == 22 && j == 22){
+					System.out.println("");
+				}
 				
 				
 			}
