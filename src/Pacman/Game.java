@@ -8,11 +8,12 @@ import javafx.scene.paint.Color;
 public class Game {
 	private Pane pacmanPane;
 	private SmartSquare[][] _map;
-	
-	public Game(Pane pacmanPane){
+	private Pacman _pacman;
+	public Game(Pane pacmanPane, Pacman pacman){
 		pacmanPane.isFocused();
 		pacmanPane.setFocusTraversable(true);
 		this.pacmanPane = pacmanPane;
+		this._pacman = pacman; 
 		//set up timeline here
 		
 		_map = new Board().get_map();
@@ -20,11 +21,8 @@ public class Game {
 		for (int i = 0; i < _map.length; i++){
 			for (int j = 0; j < _map[i].length; j++){
 				
-//				pacmanPane.getChildren().add(_map[i][j].getNode());
-				SmartSquare s = _map[i][j];
-				s.setFill(Color.BLACK);
-				pacmanPane.getChildren().add(s.getNode());
-				
+			pacmanPane.getChildren().addAll(_map[i][j].getNode());
+								
 				
 				
 			}

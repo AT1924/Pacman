@@ -15,8 +15,8 @@ public class SmartSquare {
 	public SmartSquare(BoardLocation location){
 		
 		_rect = new Rectangle();
-		_rect.setWidth(20);
-		_rect.setHeight(20);
+		_rect.setWidth(Constants.SQUARE_SIZE);
+		_rect.setHeight(Constants.SQUARE_SIZE);
 		_rect.setFill(Color.BLACK);
 		
 		// enum describing value of board location 
@@ -33,13 +33,22 @@ public class SmartSquare {
 	}
 	
 	
-//	public void setX(double x){
-//		_rect.setX(x);
-//	}
-//	
-//	public void setY(double y){
-//		_rect.setY(y);
-//	}
+	public void setX(double x){
+		_rect.setX(x);
+	}
+	
+	public void setY(double y){
+		_rect.setY(y);
+	}
+	
+	public double getX(){
+		return _rect.getX();
+	}
+	
+	public double getY(){
+		return _rect.getY();
+	}
+	
 	
 	public void setFill(Color color){
 		_rect.setFill(color);
