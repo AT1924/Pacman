@@ -12,6 +12,7 @@ public class SmartSquare {
 	private BoardLocation _location;
 	private boolean _isWall = false;
 	
+	
 	public SmartSquare(BoardLocation location){
 		
 		_rect = new Rectangle();

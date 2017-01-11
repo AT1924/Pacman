@@ -3,15 +3,17 @@ package Pacman;
 import cs015.fnl.PacmanSupport.BoardLocation;
 import cs015.fnl.PacmanSupport.SupportMap;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
 
 public class Board {
 	public SmartSquare[][] _map;
 	private BoardLocation _location;
 	private SmartSquare _square;
-	private Pacman _pacman;
+	private Ellipse _pacman;
 	
 	public Board(){
-		_pacman = new Pacman();
+		 _pacman = new Pacman().getPacman();
+	//	_pacman = new Pacman();
 		
 		//_location = new BoardLocation();
 		cs015.fnl.PacmanSupport.SupportMap	stencilMap = new cs015.fnl.PacmanSupport.SupportMap();
@@ -40,7 +42,6 @@ public class Board {
 				switch(tempMap[i][j]){
 				case WALL:
 					_map[i][j].setFill(Color.CORNFLOWERBLUE);
-					_map[i][j].get_isWall();
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
 					break;
@@ -52,12 +53,14 @@ public class Board {
 					break;
 				
 				case DOT:
+					// TODO change color after dots have been placed
 					_map[i][j].setFill(Color.INDIANRED);
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
 					break;
 					
 				case ENERGIZER:
+					// TODO change color after energizers have been placed 
 					_map[i][j].setFill(Color.DARKOLIVEGREEN);
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
@@ -67,8 +70,9 @@ public class Board {
 					_map[i][j].setFill(Color.BLACK);
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
-					_pacman.setXLoc(_map[i][j].getX());
-					_pacman.setYLoc(_map[i][j].getY());
+//					_pacman.setXLoc(_map[i][j].getX());
+//					_pacman.setYLoc(_map[i][j].getY());
+					_pacman.setCenterX(_map[i][j])
 					break;
 					
 					
