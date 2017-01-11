@@ -71,6 +71,8 @@ public class Board {
 					_pacman.setYLoc(_map[i][j].getY());
 					break;
 					
+					
+					
 				
 				default:
 					System.out.println("");
@@ -119,6 +121,14 @@ public class Board {
 	
 	public SmartSquare[][] get_map(){
 		return _map;
+	}
+	
+	public double get_pacmanXLoc(){
+		return _pacman.getXLoc();
+	}
+	
+	public double get_pacmanYLoc(){
+		return _pacman.getYLoc();
 	}
 	
 }
