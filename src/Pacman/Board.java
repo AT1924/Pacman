@@ -12,8 +12,8 @@ public class Board {
 	private Ellipse _pacman;
 	
 	public Board(){
-		 _pacman = new Pacman().getPacman();
-	//	_pacman = new Pacman();
+		// _pacman = new Pacman().getPacman();
+		_pacman = new Pacman();
 		
 		//_location = new BoardLocation();
 		cs015.fnl.PacmanSupport.SupportMap	stencilMap = new cs015.fnl.PacmanSupport.SupportMap();
@@ -67,12 +67,16 @@ public class Board {
 					break;
 					
 				case PACMAN_START_LOCATION:
-					_map[i][j].setFill(Color.BLACK);
+					_map[i][j].setFill(Color.YELLOW);
+					_map[i][j].setPacman(true);
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
 //					_pacman.setXLoc(_map[i][j].getX());
 //					_pacman.setYLoc(_map[i][j].getY());
-					_pacman.setCenterX(_map[i][j])
+					System.out.println(_pacman);
+					System.out.println(_map[i][j].getX());
+					_pacman.setCenterX(i);
+					_pacman.setCenterY(j);
 					break;
 					
 					
@@ -127,13 +131,7 @@ public class Board {
 		return _map;
 	}
 	
-	public double get_pacmanXLoc(){
-		return _pacman.getXLoc();
-	}
 	
-	public double get_pacmanYLoc(){
-		return _pacman.getYLoc();
-	}
 	
 }
 	

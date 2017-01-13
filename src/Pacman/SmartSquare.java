@@ -11,7 +11,7 @@ public class SmartSquare {
 	private Rectangle _rect;
 	private BoardLocation _location;
 	private boolean _isWall = false;
-	
+	private boolean _containsPacman = false;
 	
 	public SmartSquare(BoardLocation location){
 		
@@ -63,5 +63,8 @@ public class SmartSquare {
 		return _rect;
 	}
 	
+	public void setPacman(Boolean b){
+		_containsPacman = b;
+	}
 	
 }
