@@ -41,17 +41,17 @@ public class Game {
 				
 			}
 		}
-	//	pacmanPane.getChildren().add(_pacman.getNode());
+		pacmanPane.addEventHandler(KeyEvent.KEY_PRESSED, new KeyHandler());
 		
 	}
 	
-	// set up of Timeline
-//	public void setupTimeline() {
-//		KeyFrame kf = new KeyFrame(Duration.ofMillis(500), new TimeHandler());
-//		_timeline = new Timeline(kf);
-//		_timeline.setCycleCount(Animation.INDEFINITE);
-//		_timeline.play();
-//	}
+//	 set up of Timeline
+	public void setupTimeline() {
+		KeyFrame kf = new KeyFrame(Duration.ofMillis(500), new TimeHandler());
+		_timeline = new Timeline(kf);
+		_timeline.setCycleCount(Animation.INDEFINITE);
+		_timeline.play();
+	}
 
 	private class TimeHandler implements EventHandler<ActionEvent> {
 

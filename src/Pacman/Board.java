@@ -26,19 +26,8 @@ public class Board {
 			for (int j = 0; j < tempMap[i].length; j++){
 				// create and place SmartSquare on board
 				_map[i][j] = new SmartSquare(tempMap[i][j]);
-				//System.out.println(_map[i][j]);
-//				if (tempMap[i][j] == _location.WALL){
-//					_map[i][j].setFill(Color.BLUE);
-//					//_map[i][j].get_isWall(); 
-//					
-//				}
-//				if (tempMap[i][j] == _location.FREE){
-//					_map[i][j].setFill(Color.BLACK);
-//				}
-//				else{
-//					//not a wall
-//					System.out.println("");
-//				}
+
+
 				switch(tempMap[i][j]){
 				case WALL:
 					_map[i][j].setFill(Color.CORNFLOWERBLUE);
