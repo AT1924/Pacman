@@ -9,7 +9,7 @@ public class Board {
 	public SmartSquare[][] _map;
 	private BoardLocation _location;
 	private SmartSquare _square;
-	private Ellipse _pacman;
+	private Pacman _pacman;
 	
 	public Board(){
 		// _pacman = new Pacman().getPacman();
@@ -62,10 +62,11 @@ public class Board {
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
 //					_pacman.setXLoc(_map[i][j].getX());
 //					_pacman.setYLoc(_map[i][j].getY());
-					System.out.println(_pacman);
-					System.out.println(_map[i][j].getX());
+				//	System.out.println(_pacman);
+				//	System.out.println(_map[i][j].getX());
 					_pacman.setCenterX(i);
 					_pacman.setCenterY(j);
+					System.out.println(_pacman.getCenterX());
 					break;
 					
 					
@@ -118,6 +119,43 @@ public class Board {
 	
 	public SmartSquare[][] get_map(){
 		return _map;
+	}
+	
+	
+	public Boolean canMoveLeft(){
+		int x =  (int) (_pacman.getCenterX()/Constants.SQUARE_SIZE);		
+		int y = (int) (_pacman.getCenterY()/Constants.SQUARE_SIZE);
+			if (_map[y+1][x].get_location() == _location.WALL){
+				return false;
+			}
+	return true;
+	}
+	
+	public Boolean canMoveRight(){
+		int x =  (int) (_pacman.getCenterX()/Constants.SQUARE_SIZE);		
+		int y = (int) (_pacman.getCenterY()/Constants.SQUARE_SIZE);
+			if (_map[y][x+1].get_location() == _location.WALL){
+				return false;
+			}
+	return true;
+	} 
+	
+	public Boolean canMoveDown(){
+			int x =  (int) (_pacman.getCenterX()/Constants.SQUARE_SIZE);		
+			int y = (int) (_pacman.getCenterY()/Constants.SQUARE_SIZE);
+				if (_map[y+1][x].get_location() == _location.WALL){
+					return false;
+				}
+		return true;
+	}
+	
+	public Boolean canMoveUp(){
+				int x =  (int) (_pacman.getCenterX()/Constants.SQUARE_SIZE);		
+				int y = (int) (_pacman.getCenterY()/Constants.SQUARE_SIZE);
+				if (_map[y-1][x].get_location() == _location.WALL){
+					return false;
+			}
+		return true;
 	}
 	
 	

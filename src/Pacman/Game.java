@@ -3,7 +3,7 @@ package Pacman;
 
 
 
-import java.time.Duration;
+
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -12,6 +12,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import javafx.event.ActionEvent;
 
 
@@ -47,7 +48,7 @@ public class Game {
 	
 //	 set up of Timeline
 	public void setupTimeline() {
-		KeyFrame kf = new KeyFrame(Duration.ofMillis(500), new TimeHandler());
+		KeyFrame kf = new KeyFrame(Duration.millis(500), new TimeHandler());
 		_timeline = new Timeline(kf);
 		_timeline.setCycleCount(Animation.INDEFINITE);
 		_timeline.play();
@@ -60,9 +61,10 @@ public class Game {
 // what get called during the handle method of the TimeHandler
 		public void handle(ActionEvent event){
 			// add methods
+			event.consume();
 		}
 	
-
+		
 	}
 	
 	private class KeyHandler implements EventHandler<KeyEvent>{

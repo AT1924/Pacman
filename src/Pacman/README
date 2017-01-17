@@ -1,3 +1,5 @@
 Bug List
 
 Black square in top left corner
+
+Direction Enum error, says it needs a default case

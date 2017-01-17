@@ -67,4 +67,8 @@ public class SmartSquare {
 		_containsPacman = b;
 	}
 	
+	public BoardLocation get_location(){
+		return _location;
+	}
+	
 }
