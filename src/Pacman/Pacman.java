@@ -9,14 +9,13 @@ import javafx.scene.shape.Ellipse;
 public class Pacman extends Ellipse{
 	private Ellipse _ellipse;
 	private BoardLocation _location;
-	private SmartSquare[][] _map;
-	private BoardLocation[][] _tempMap;
+	private SmartSquare _currentPos;
 	
 	//direction to move Pacman
 	private String direction;
 	
 	
-	public Pacman(){
+	public Pacman(SmartSquare currentPos){
 //		_ellipse = new Ellipse();
 //		_ellipse.setRadiusX(Constants.PACMAN_RADIUS);
 //		_ellipse.setRadiusY(Constants.PACMAN_RADIUS);
@@ -24,12 +23,8 @@ public class Pacman extends Ellipse{
 		this.setRadiusX(Constants.PACMAN_RADIUS);
 		this.setRadiusY(Constants.PACMAN_RADIUS);
 		this.setFill(Color.YELLOW);		
+		_currentPos = currentPos;
 		
-		//_map = new Board().get_map();
-	//	_map = new Board().get_map();
-		
-		SupportMap tempMap = new SupportMap();
-		_tempMap = tempMap.getMap();
 		
 	//set pacman's direction
 		direction = "";
@@ -55,42 +50,17 @@ public class Pacman extends Ellipse{
 		return _ellipse;
 	}
 	
-//	public Boolean canMoveLeft(){
-//		int x =  (int) (_ellipse.getCenterX()/Constants.SQUARE_SIZE);		
-//		int y = (int) (_ellipse.getCenterY()/Constants.SQUARE_SIZE);
-//			if (_map[y+1][x].get_location() == _location.WALL){
-//				return false;
-//			}
-//	return true;
-//	}
-//	
-//	public Boolean canMoveRight(){
-//		int x =  (int) (_ellipse.getCenterX()/Constants.SQUARE_SIZE);		
-//		int y = (int) (_ellipse.getCenterY()/Constants.SQUARE_SIZE);
-//			if (_map[y][x+1].get_location() == _location.WALL){
-//				return false;
-//			}
-//	return true;
-//	} 
-//	
-//	public Boolean canMoveDown(){
-//			int x =  (int) (_ellipse.getCenterX()/Constants.SQUARE_SIZE);		
-//			int y = (int) (_ellipse.getCenterY()/Constants.SQUARE_SIZE);
-//				if (_map[y+1][x].get_location() == _location.WALL){
-//					return false;
-//				}
-//		return true;
-//	}
-//	
-//	public Boolean canMoveUp(){
-//				int x =  (int) (_ellipse.getCenterX()/Constants.SQUARE_SIZE);		
-//				int y = (int) (_ellipse.getCenterY()/Constants.SQUARE_SIZE);
-//				if (_map[y-1][x].get_location() == _location.WALL){
-//					return false;
-//			}
-//		return true;
-//	}
 	
+	public SmartSquare get_currentPos() {
+		return _currentPos;
+	}
+
+
+	public void set_currentPos(SmartSquare _currentPos) {
+		this._currentPos = _currentPos;
+	}
+
+
 	public void moveLeft(){
 		_ellipse.setCenterX(_ellipse.getCenterX()-Constants.SQUARE_SIZE);
 		_ellipse.setCenterY(_ellipse.getCenterY());

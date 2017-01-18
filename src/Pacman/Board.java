@@ -9,11 +9,11 @@ public class Board {
 	public SmartSquare[][] _map;
 	private BoardLocation _location;
 	private SmartSquare _square;
-	private Pacman _pacman;
+
 	
-	public Board(){
-		// _pacman = new Pacman().getPacman();
-		_pacman = new Pacman();
+	public Board(Pacman pacman){
+		
+		
 		
 		//_location = new BoardLocation();
 		cs015.fnl.PacmanSupport.SupportMap	stencilMap = new cs015.fnl.PacmanSupport.SupportMap();
@@ -56,17 +56,15 @@ public class Board {
 					break;
 					
 				case PACMAN_START_LOCATION:
+				
 					_map[i][j].setFill(Color.YELLOW);
 					_map[i][j].setPacman(true);
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
-//					_pacman.setXLoc(_map[i][j].getX());
-//					_pacman.setYLoc(_map[i][j].getY());
-				//	System.out.println(_pacman);
-				//	System.out.println(_map[i][j].getX());
-					_pacman.setCenterX(i);
-					_pacman.setCenterY(j);
-					System.out.println(_pacman.getCenterX());
+					
+					pacman.setCenterX(i);
+					pacman.setCenterY(j);
+					
 					break;
 					
 					
@@ -106,16 +104,7 @@ public class Board {
 		_map[row][col] = square;
 	}
 	
-	public void setMap(){
-		Board b = new Board();
-		
-		for (int row = 0; row < 23; row++){
-			for (int col = 0; col < 23; col++){
-			//	if (_map){
-					
-				}
-			}
-		}
+
 	
 	public SmartSquare[][] get_map(){
 		return _map;
@@ -123,8 +112,8 @@ public class Board {
 	
 	
 	public Boolean canMoveLeft(){
-		int x =  (int) (_pacman.getCenterX()/Constants.SQUARE_SIZE);		
-		int y = (int) (_pacman.getCenterY()/Constants.SQUARE_SIZE);
+		int x =  (int) (pacman.getCenterX()/Constants.SQUARE_SIZE);		
+		int y = (int) (pacman.getCenterY()/Constants.SQUARE_SIZE);
 			if (_map[y+1][x].get_location() == _location.WALL){
 				return false;
 			}
@@ -132,8 +121,8 @@ public class Board {
 	}
 	
 	public Boolean canMoveRight(){
-		int x =  (int) (_pacman.getCenterX()/Constants.SQUARE_SIZE);		
-		int y = (int) (_pacman.getCenterY()/Constants.SQUARE_SIZE);
+		int x =  (int) (pacman.getCenterX()/Constants.SQUARE_SIZE);		
+		int y = (int) (pacman.getCenterY()/Constants.SQUARE_SIZE);
 			if (_map[y][x+1].get_location() == _location.WALL){
 				return false;
 			}
@@ -158,7 +147,9 @@ public class Board {
 		return true;
 	}
 	
-	
+	public SmartSquare getSquare(int x, int y){
+		return _map[x][y];
+	}
 	
 }
 	
