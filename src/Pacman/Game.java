@@ -52,6 +52,8 @@ public class Game {
 		_timeline = new Timeline(kf);
 		_timeline.setCycleCount(Animation.INDEFINITE);
 		_timeline.play();
+		
+		
 	}
 
 	private class TimeHandler implements EventHandler<ActionEvent> {
