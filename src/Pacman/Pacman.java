@@ -12,6 +12,9 @@ public class Pacman extends Ellipse{
 	private SmartSquare[][] _map;
 	private BoardLocation[][] _tempMap;
 	
+	//direction to move Pacman
+	private String direction;
+	
 	
 	public Pacman(){
 //		_ellipse = new Ellipse();
@@ -27,8 +30,22 @@ public class Pacman extends Ellipse{
 		
 		SupportMap tempMap = new SupportMap();
 		_tempMap = tempMap.getMap();
+		
+	//set pacman's direction
+		direction = "";
 	}
 	
+	
+	public String getDirection() {
+		return direction;
+	}
+
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+
+
 	public Ellipse getPacman(){
 		return _ellipse;
 	}
