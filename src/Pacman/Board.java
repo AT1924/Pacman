@@ -9,9 +9,11 @@ public class Board {
 	public SmartSquare[][] _map;
 	private BoardLocation _location;
 	private SmartSquare _square;
-
-	
-	public Board(Pacman pacman){
+	//private Pacman _pacman;
+	private SmartSquare _pacmanCurrPos;
+	private int _currPosX;
+	private int _currPosY;
+	public Board(){
 		
 		
 		
@@ -26,6 +28,7 @@ public class Board {
 			for (int j = 0; j < tempMap[i].length; j++){
 				// create and place SmartSquare on board
 				_map[i][j] = new SmartSquare(tempMap[i][j]);
+				System.out.println(_map.length);
 
 
 				switch(tempMap[i][j]){
@@ -56,30 +59,28 @@ public class Board {
 					break;
 					
 				case PACMAN_START_LOCATION:
-				
+					// here _map[i][j] defines pacmans current position
+					// we can create getter and setter in this class for this position 
+					// and only one pacman will be created in Game
 					_map[i][j].setFill(Color.YELLOW);
 					_map[i][j].setPacman(true);
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
-					
-					pacman.setCenterX(i);
-					pacman.setCenterY(j);
+					_currPosX = i;
+					_currPosY = j;
+					_pacmanCurrPos = _map[i][j];
+					// when pacman is an ellipse shift the the setCenters to the Game class
+				//	_pacman.setCenterX(i);
+				//	_pacman.setCenterY(j);
 					
 					break;
-					
 					
 					
 				
 				default:
 					System.out.println("");
 				}
-			
-				//_map[i][j] = new SmartSquare(tempMap[i][j]);
-				//if (_map[i][j] == _location.WALL)
-				//System.out.println(_map[i][j]);
-				if(i == 22 && j == 22){
-					System.out.println("");
-				}
+				
 				
 				
 			}
@@ -87,16 +88,20 @@ public class Board {
 		
 		}
 	
-//	public static void main(String[] argv){
-//		Board b = new Board();
-//		int x = 0;
-//		for (int i = 0; i < b._map.length; i++){
-//			for (int j = 0; j < b._map[i].length; j++){
-//				if (_map[i][j] = )
-//			}
-//		}
-//	}
+
 	
+	public SmartSquare get_pacmanCurrPos() {
+		return _pacmanCurrPos;
+	}
+
+
+
+	public void set_pacmanCurrPos(SmartSquare _pacmanCurrPos) {
+		this._pacmanCurrPos = _pacmanCurrPos;
+	}
+
+
+
 	// potentially cruft
 	public void setLocation(int row, int col, SmartSquare square){
 		//create square at location row, col 
@@ -110,42 +115,6 @@ public class Board {
 		return _map;
 	}
 	
-	
-	public Boolean canMoveLeft(){
-		int x =  (int) (pacman.getCenterX()/Constants.SQUARE_SIZE);		
-		int y = (int) (pacman.getCenterY()/Constants.SQUARE_SIZE);
-			if (_map[y+1][x].get_location() == _location.WALL){
-				return false;
-			}
-	return true;
-	}
-	
-	public Boolean canMoveRight(){
-		int x =  (int) (pacman.getCenterX()/Constants.SQUARE_SIZE);		
-		int y = (int) (pacman.getCenterY()/Constants.SQUARE_SIZE);
-			if (_map[y][x+1].get_location() == _location.WALL){
-				return false;
-			}
-	return true;
-	} 
-	
-	public Boolean canMoveDown(){
-			int x =  (int) (_pacman.getCenterX()/Constants.SQUARE_SIZE);		
-			int y = (int) (_pacman.getCenterY()/Constants.SQUARE_SIZE);
-				if (_map[y+1][x].get_location() == _location.WALL){
-					return false;
-				}
-		return true;
-	}
-	
-	public Boolean canMoveUp(){
-				int x =  (int) (_pacman.getCenterX()/Constants.SQUARE_SIZE);		
-				int y = (int) (_pacman.getCenterY()/Constants.SQUARE_SIZE);
-				if (_map[y-1][x].get_location() == _location.WALL){
-					return false;
-			}
-		return true;
-	}
 	
 	public SmartSquare getSquare(int x, int y){
 		return _map[x][y];

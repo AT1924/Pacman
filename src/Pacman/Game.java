@@ -32,12 +32,13 @@ public class Game {
 		this._board = new Board();
 		
 		// TODO set pacman's starting position here 
-		_pacman = new Pacman(null);
+		 
+		_pacman = new Pacman(_board.get_pacmanCurrPos());
 		
 		//set up timeline here
 		this.setupTimeline();
 		
-		_map = new Board(_pacman).get_map();
+		_map = new Board().get_map();
 		
 		for (int i = 0; i < _map.length; i++){
 			for (int j = 0; j < _map[i].length; j++){
@@ -148,7 +149,7 @@ public class Game {
 				
 		}
 		// update the board space pacman is on
-		double x  = _pacman.getCenterX();
+		
 		
 		// update pacman to reflect his new position 
 		// update the board space of pacman's new position
@@ -170,6 +171,8 @@ public class Game {
 		_pacman.set_currentPos(newPos);
 	}
 	
-	
+	public Pacman get_pacman(){
+		return _pacman;
+	}
 	
 }
