@@ -1,10 +1,5 @@
 package Pacman;
 
-
-
-
-
-
 import cs015.fnl.PacmanSupport.BoardLocation;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -19,7 +14,6 @@ import javafx.event.ActionEvent;
 
 public class Game {
 	private Pane pacmanPane;
-	private SmartSquare[][] _map;
 	private Pacman _pacman;
 	private Timeline _timeline;
 	private Board _board;
@@ -41,13 +35,12 @@ public class Game {
 		//set up timeline here
 		this.setupTimeline();
 		
-		_map = new Board(_pacman).get_map();
+		 SmartSquare[][] _map = _board.get_map();
 		
 		for (int i = 0; i < _map.length; i++){
 			for (int j = 0; j < _map[i].length; j++){
 				
 			pacmanPane.getChildren().addAll(_map[i][j].getNode());
-			
 				
 				
 			}
