@@ -23,13 +23,14 @@ public class Game {
 	private Pacman _pacman;
 	private Timeline _timeline;
 	private Board _board;
-	
+	private Dot _dot;
 	
 	public Game(Pane pacmanPane){
 		pacmanPane.isFocused();
 		pacmanPane.setFocusTraversable(true);
 		this.pacmanPane = pacmanPane;
 		this._board = new Board();
+		_dot = new Dot();
 		
 		// TODO set pacman's starting position here 
 		 
@@ -43,7 +44,7 @@ public class Game {
 		for (int i = 0; i < _map.length; i++){
 			for (int j = 0; j < _map[i].length; j++){
 				
-			pacmanPane.getChildren().addAll(_map[i][j].getNode());
+			pacmanPane.getChildren().addAll(_map[i][j].getNode(), _dot);
 			
 				
 				
@@ -174,5 +175,18 @@ public class Game {
 	public Pacman get_pacman(){
 		return _pacman;
 	}
+	
+	public void checkCollisions(){
+		if (_pacman.get_currentPos().get_location() == BoardLocation.DOT){
+			// for this purpose we want all dots to disappear both logically and graphically 
+			_pacman.get_currentPos().setDot(false);
+			//_pacman.get_currentPos().setFill(Color.BLACK);
+			_pacman.get_currentPos().setFill(Color.YELLOW);
+			// then we want to change the color of the space (graphically)
+			// if pacman is an ellipse then redraw him/ if he is a square redraw square in yellow
+			
+		}
+	}
+	
 	
 }

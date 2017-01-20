@@ -3,14 +3,14 @@ package Pacman;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 
-public class Dot implements SquareInterface{
+public class Dot extends Ellipse{
 	private Ellipse _ellipse;
 	
 	public Dot(){
-		_ellipse = new Ellipse();
-		_ellipse.setRadiusX(5);
-		_ellipse.setRadiusY(5);
-		_ellipse.setFill(Color.WHITE);
+		//_ellipse = new Ellipse();
+		this.setRadiusX(5);
+		this.setRadiusY(5);
+		this.setFill(Color.WHITE);
 	}
 	
 	

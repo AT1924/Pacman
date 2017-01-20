@@ -13,8 +13,11 @@ public class Board {
 	private SmartSquare _pacmanCurrPos;
 	private int _currPosX;
 	private int _currPosY;
+	private Dot _dot;
+	
 	public Board(){
 		
+		_dot = new Dot();
 		
 		
 		//_location = new BoardLocation();
@@ -28,8 +31,7 @@ public class Board {
 			for (int j = 0; j < tempMap[i].length; j++){
 				// create and place SmartSquare on board
 				_map[i][j] = new SmartSquare(tempMap[i][j]);
-				System.out.println(_map.length);
-
+				
 
 				switch(tempMap[i][j]){
 				case WALL:
@@ -46,9 +48,13 @@ public class Board {
 				
 				case DOT:
 					// TODO change color after dots have been placed
-					_map[i][j].setFill(Color.INDIANRED);
+					//_map[i][j].setFill(Color.INDIANRED);
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
+					_map[i][j].setDot(true);
+					_dot.setCenterX(_map[i][j].getX()+Constants.SQUARE_SIZE/2);
+					_dot.setCenterY(_map[i][j].getY()+Constants.SQUARE_SIZE/2);
+					System.out.println(_dot.getCenterX());
 					break;
 					
 				case ENERGIZER:
@@ -56,6 +62,7 @@ public class Board {
 					_map[i][j].setFill(Color.DARKOLIVEGREEN);
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
+					_map[i][j].setEnergizer(true) ;
 					break;
 					
 				case PACMAN_START_LOCATION:

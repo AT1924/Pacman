@@ -12,6 +12,8 @@ public class SmartSquare {
 	private BoardLocation _location;
 	private boolean _isWall = false;
 	private boolean _containsPacman = false;
+	private boolean _containsDot = false;
+	private boolean _containsEnergizer = false;
 	
 	public SmartSquare(BoardLocation location){
 		
@@ -65,6 +67,14 @@ public class SmartSquare {
 	
 	public void setPacman(Boolean b){
 		_containsPacman = b;
+	}
+	
+	public void setDot(Boolean b){
+		_containsDot = b;
+	}
+	
+	public void setEnergizer(Boolean b){
+		_containsEnergizer = b; 
 	}
 	
 	public BoardLocation get_location(){
