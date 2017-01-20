@@ -29,18 +29,19 @@ public class Game {
 		pacmanPane.isFocused();
 		pacmanPane.setFocusTraversable(true);
 		this.pacmanPane = pacmanPane;
-		this._board = new Board();
+		
 		
 		
 		// TODO set pacman's starting position here 
 		 
 		_pacman = new Pacman(null);
 	//	_pacman = new Pacman(_board.get_pacmanCurrPos());
+		this._board = new Board(_pacman);
 		
 		//set up timeline here
 		this.setupTimeline();
 		
-		_map = new Board().get_map();
+		_map = new Board(_pacman).get_map();
 		
 		for (int i = 0; i < _map.length; i++){
 			for (int j = 0; j < _map[i].length; j++){
@@ -57,7 +58,7 @@ public class Game {
 	
 //	 set up of Timeline
 	public void setupTimeline() {
-		KeyFrame kf = new KeyFrame(Duration.millis(500), new TimeHandler());
+		KeyFrame kf = new KeyFrame(Duration.millis(2000), new TimeHandler());
 		_timeline = new Timeline(kf);
 		_timeline.setCycleCount(Animation.INDEFINITE);
 		_timeline.play();
@@ -86,12 +87,18 @@ public class Game {
 			switch(e.getCode()){
 			case RIGHT:
 				_pacman.setDirection("R");
+				break;
 			case LEFT:
 				_pacman.setDirection("L");
+				break;
 			case UP:
 				_pacman.setDirection("U");
+				break;
 			case DOWN:	
 				_pacman.setDirection("D");
+				break;
+			 default:
+				 break;
 			}
 			
 		}
@@ -110,8 +117,9 @@ public class Game {
 		// 2. check if pacman can move
 		switch(direction){
 			case "R":
-				SmartSquare rPos = _board.getSquare((int) oldPos.getX()+1,(int) oldPos.getY());
-				if (rPos.get_location() == BoardLocation.WALL){
+				SmartSquare rPos = _board.getSquare((int) oldPos.get_xPos()+1,(int) oldPos.get_yPos());
+				if (rPos.get_isWall()){
+					// thinks rPos is a wall, bug
 					return;
 				}
 				else{
@@ -120,8 +128,8 @@ public class Game {
 				}
 				break;
 			case "L":
-				SmartSquare lPos = _board.getSquare((int) oldPos.getX()-1,(int) oldPos.getY());
-				if (lPos.get_location() == BoardLocation.WALL){
+				SmartSquare lPos = _board.getSquare((int) oldPos.get_xPos()-1,(int) oldPos.get_yPos());
+				if (lPos.get_isWall()){
 					return;
 				}
 				else{
@@ -130,8 +138,8 @@ public class Game {
 				}
 				break;
 			case "U":
-				SmartSquare uPos = _board.getSquare((int) oldPos.getX(),(int) oldPos.getY()-1);
-				if (uPos.get_location() == BoardLocation.WALL){
+				SmartSquare uPos = _board.getSquare((int) oldPos.get_xPos(),(int) oldPos.get_yPos()-1);
+				if (uPos.get_isWall()){
 					return;
 				}
 				else{
@@ -140,8 +148,8 @@ public class Game {
 				}
 				break;
 			case "D":
-				SmartSquare dPos = _board.getSquare((int) oldPos.getX(),(int) oldPos.getY()+1);
-				if (dPos.get_location() == BoardLocation.WALL){
+				SmartSquare dPos = _board.getSquare((int) oldPos.get_xPos(),(int) oldPos.get_yPos()+1);
+				if (dPos.get_isWall()){
 					return;
 				}
 				else{
@@ -169,8 +177,10 @@ public class Game {
 		oldPos.setFill(Color.BLACK);
 		//update newPos
 		newPos.setPacman(true);
-		newPos.setFill(Color.YELLOW);
 		_pacman.set_currentPos(newPos);
+		newPos.setFill(Color.YELLOW);
+		@SuppressWarnings("unused")
+		int x = 0;
 	}
 	
 	public Pacman get_pacman(){

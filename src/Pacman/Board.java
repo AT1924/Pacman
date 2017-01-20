@@ -13,7 +13,7 @@ public class Board {
 	private SmartSquare _pacmanCurrPos;
 	private Dot _dot;
 	
-	public Board(){
+	public Board(Pacman pacman){
 		
 		_dot = new Dot();
 		
@@ -34,25 +34,40 @@ public class Board {
 				switch(tempMap[i][j]){
 				case WALL:
 					_map[i][j].setFill(Color.CORNFLOWERBLUE);
+					// these coordinates are for coloring the map
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
+					// these coordinates are for manipulating the board
+					_map[i][j].set_xPos(j);
+					_map[i][j].set_yPos(i);
+					_map[i][j].set_isWall(true);
 					break;
 					
 				case FREE:
 					_map[i][j].setFill(Color.BLACK); 
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
+					
+					// these coordinates are for manipulating the board
+					_map[i][j].set_xPos(j);
+					_map[i][j].set_yPos(i);
 					break;
 				
 				case DOT:
 					// TODO change color after dots have been placed
-					//_map[i][j].setFill(Color.INDIANRED);
+					_map[i][j].setFill(Color.INDIANRED);
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
+					
+					// these coordinates are for manipulating the board
+					_map[i][j].set_xPos(j);
+					_map[i][j].set_yPos(i);
+					
 					_map[i][j].setDot(true);
+					// setting center of dot ellipse to center of smartsquare
 					_dot.setCenterX(_map[i][j].getX()+Constants.SQUARE_SIZE/2);
 					_dot.setCenterY(_map[i][j].getY()+Constants.SQUARE_SIZE/2);
-					System.out.println(_dot.getCenterX());
+					
 					break;
 					
 				case ENERGIZER:
@@ -60,6 +75,9 @@ public class Board {
 					_map[i][j].setFill(Color.DARKOLIVEGREEN);
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
+					// these coordinates are for manipulating the board
+					_map[i][j].set_xPos(j);
+					_map[i][j].set_yPos(i);
 					_map[i][j].setEnergizer(true) ;
 					break;
 					
@@ -71,7 +89,11 @@ public class Board {
 					_map[i][j].setPacman(true);
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
-					_pacmanCurrPos = _map[i][j];
+					// these coordinates are for manipulating the board
+					_map[i][j].set_xPos(j);
+					_map[i][j].set_yPos(i);
+				
+					pacman.set_currentPos(_map[i][j]);
 					// when pacman is an ellipse shift the the setCenters to the Game class
 				//	_pacman.setCenterX(i);
 				//	_pacman.setCenterY(j);
