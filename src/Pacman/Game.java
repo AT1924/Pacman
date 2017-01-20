@@ -110,7 +110,7 @@ public class Game {
 		// 2. check if pacman can move
 		switch(direction){
 			case "R":
-				SmartSquare rPos = _board.getSquare((int) oldPos.get_xPos()+1,(int) oldPos.get_yPos());
+				SmartSquare rPos = _board.getSquare((int) oldPos.get_yPos(), (int) oldPos.get_xPos()+1);
 				if (rPos.get_isWall()){
 					// thinks rPos is a wall, bug
 					return;
