@@ -11,8 +11,6 @@ public class Board {
 	private SmartSquare _square;
 	//private Pacman _pacman;
 	private SmartSquare _pacmanCurrPos;
-	private int _currPosX;
-	private int _currPosY;
 	private Dot _dot;
 	
 	public Board(){
@@ -73,8 +71,6 @@ public class Board {
 					_map[i][j].setPacman(true);
 					_map[i][j].setX(j*Constants.SQUARE_SIZE);
 					_map[i][j].setY(i*Constants.SQUARE_SIZE);
-					_currPosX = i;
-					_currPosY = j;
 					_pacmanCurrPos = _map[i][j];
 					// when pacman is an ellipse shift the the setCenters to the Game class
 				//	_pacman.setCenterX(i);

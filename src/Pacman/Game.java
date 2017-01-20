@@ -23,18 +23,19 @@ public class Game {
 	private Pacman _pacman;
 	private Timeline _timeline;
 	private Board _board;
-	private Dot _dot;
+	
 	
 	public Game(Pane pacmanPane){
 		pacmanPane.isFocused();
 		pacmanPane.setFocusTraversable(true);
 		this.pacmanPane = pacmanPane;
 		this._board = new Board();
-		_dot = new Dot();
+		
 		
 		// TODO set pacman's starting position here 
 		 
-		_pacman = new Pacman(_board.get_pacmanCurrPos());
+		_pacman = new Pacman(null);
+	//	_pacman = new Pacman(_board.get_pacmanCurrPos());
 		
 		//set up timeline here
 		this.setupTimeline();
@@ -44,7 +45,7 @@ public class Game {
 		for (int i = 0; i < _map.length; i++){
 			for (int j = 0; j < _map[i].length; j++){
 				
-			pacmanPane.getChildren().addAll(_map[i][j].getNode(), _dot);
+			pacmanPane.getChildren().addAll(_map[i][j].getNode());
 			
 				
 				
@@ -180,6 +181,8 @@ public class Game {
 		if (_pacman.get_currentPos().get_location() == BoardLocation.DOT){
 			// for this purpose we want all dots to disappear both logically and graphically 
 			_pacman.get_currentPos().setDot(false);
+			// need a reference to the dot on the smartsquare
+			//pacmanPane.getChildren().remove()
 			//_pacman.get_currentPos().setFill(Color.BLACK);
 			_pacman.get_currentPos().setFill(Color.YELLOW);
 			// then we want to change the color of the space (graphically)
